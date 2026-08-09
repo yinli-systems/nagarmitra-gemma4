@@ -216,12 +216,25 @@ class Gemma4Agent:
         self.model_id = model_id or os.environ.get("GEMMA_MODEL_ID", "")
         if not self.model_id:
             raise RuntimeError("Set GEMMA_MODEL_ID to the mounted Gemma 4 model resource; refusing an unverified fallback.")
-        dtype = torch.bfloat16 if torch.cuda.is_available() else torch.float32
+        # Kaggle may expose a P100 while its current PyTorch wheel only contains
+        # kernels for newer architectures. Detect that before device_map="auto"
+        # places weights on an unusable GPU; a CPU run is slower but valid.
+        cuda_usable = False
+        if torch.cuda.is_available():
+            try:
+                major, minor = torch.cuda.get_device_capability()
+                compiled_arches = set(torch.cuda.get_arch_list())
+                cuda_usable = f"sm_{major}{minor}" in compiled_arches
+            except (RuntimeError, AssertionError):
+                cuda_usable = False
+        dtype = torch.bfloat16
+        device_map = "auto" if cuda_usable else {"": "cpu"}
+        print(f"Gemma 4 runtime: {'CUDA' if cuda_usable else 'CPU'}")
         self.processor = AutoProcessor.from_pretrained(self.model_id)
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_id,
-            torch_dtype=dtype,
-            device_map="auto",
+            dtype=dtype,
+            device_map=device_map,
         )
 
     def _generate(self, messages: list[dict[str, Any]], image_path: str | None = None) -> str:

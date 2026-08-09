@@ -31,7 +31,7 @@ Gemma 4 is not used as decoration around a hard-coded response. It is the intell
 
 The three functions are the only execution surface. The allow-list rejects unknown tool names and invalid arguments. The knowledge base is versioned in [`data/knowledge.json`](https://github.com/yinli-systems/nagarmitra-gemma4/blob/main/data/knowledge.json), so the model cannot turn a plausible guess into a fabricated contact or policy. The complaint function returns `send: false` by design.
 
-The attached [Kaggle Notebook](https://www.kaggle.com/code/kevin250304/nagarmitra-gemma-4-civic-action-agent) runs a parser and allow-list smoke test before loading the mounted Gemma 4 resource. It then executes the real model-backed flow on a GPU. The static demo is a deterministic presentation harness so the complete UX remains inspectable even when a model download is slow; the Python module is the source of truth for actual Gemma integration.
+The attached [Kaggle Notebook](https://www.kaggle.com/code/kevin250304/nagarmitra-gemma-4-civic-action-agent) runs a parser and allow-list smoke test before resolving the attached Gemma 4 resource. It then executes the real model-backed flow, using CUDA when the installed wheel supports the attached GPU and a safe CPU fallback otherwise. The static demo is a deterministic presentation harness so the complete UX remains inspectable even when a model load is slow; the Python module is the source of truth for actual Gemma integration.
 
 ## Safety and dignity by construction
 
@@ -58,4 +58,3 @@ This is a hackathon prototype, not a municipal deployment. The source records ar
 - [Live Demo](https://yinli-systems.github.io/nagarmitra-gemma4/)
 - [Clonable Kaggle Notebook](https://www.kaggle.com/code/kevin250304/nagarmitra-gemma-4-civic-action-agent)
 - [Gemma 4 function calling documentation](https://ai.google.dev/gemma/docs/capabilities/text/function-calling-gemma4)
-
