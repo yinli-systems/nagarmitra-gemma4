@@ -1,0 +1,11 @@
+{
+  "id": "kevin250304/nagarmitra-gemma4-demo",
+  "title": "NagarMitra — Gemma 4 civic action agent",
+  "code_file": "prayagraj_nagarmitra_gemma4.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "competition_sources": ["build-with-gemma-tfug-prayagraj-ai-prayagraj"],
+  "model_sources": ["google/gemma-4"]
+}
