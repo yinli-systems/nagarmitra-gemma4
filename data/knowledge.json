@@ -1,0 +1,56 @@
+{
+  "garbage_overflow": {
+    "label": "Overflowing waste",
+    "hindi_label": "कूड़ा जमा है",
+    "department": "Municipal sanitation",
+    "department_hi": "नगर सफाई विभाग",
+    "urgency": "today",
+    "reason": "Standing waste can attract pests and contaminate nearby drains.",
+    "reason_hi": "जमा कूड़ा कीटों को आकर्षित कर सकता है और नालियों को दूषित कर सकता है।",
+    "checklist": [
+      "Photograph the full location and one close-up",
+      "Record the nearest landmark without exposing a person's face",
+      "Do not touch unknown waste or sharps"
+    ],
+    "sources": [
+      {"title": "Swachh Bharat Mission — Urban", "url": "https://mohua.gov.in/cms/swachh-bharat-mission.php", "kind": "official"},
+      {"title": "Prayagraj Municipal Corporation", "url": "https://prayagrajmc.gov.in/", "kind": "official"}
+    ]
+  },
+  "broken_streetlight": {
+    "label": "Broken streetlight",
+    "hindi_label": "खराब स्ट्रीट लाइट",
+    "department": "Municipal electrical maintenance",
+    "department_hi": "नगर विद्युत अनुरक्षण",
+    "urgency": "this week",
+    "reason": "A dark public path increases night-time fall and safety risk.",
+    "reason_hi": "अंधेरा रास्ता रात में गिरने और सुरक्षा के जोखिम को बढ़ाता है।",
+    "checklist": [
+      "Photograph the pole number if visible",
+      "Share a nearby landmark, not a private address",
+      "Take the photo from a safe, well-lit position"
+    ],
+    "sources": [
+      {"title": "Prayagraj Municipal Corporation", "url": "https://prayagrajmc.gov.in/", "kind": "official"},
+      {"title": "India Smart Cities Mission", "url": "https://smartcities.gov.in/", "kind": "official"}
+    ]
+  },
+  "unsafe_water": {
+    "label": "Possible water contamination",
+    "hindi_label": "पानी की गुणवत्ता संदिग्ध",
+    "department": "Water supply / public health",
+    "department_hi": "जल आपूर्ति / जन स्वास्थ्य",
+    "urgency": "immediate review",
+    "reason": "Unusual colour or odour is a reason to pause use and request testing; it is not a diagnosis.",
+    "reason_hi": "असामान्य रंग या गंध पर पानी का उपयोग रोककर जांच मांगें; यह निदान नहीं है।",
+    "checklist": [
+      "Do not drink or taste water that looks or smells unusual",
+      "Keep children and animals away from the source",
+      "Record time, location, colour and odour without handling the sample"
+    ],
+    "sources": [
+      {"title": "Jal Jeevan Mission", "url": "https://jaljeevanmission.gov.in/", "kind": "official"},
+      {"title": "Ministry of Health and Family Welfare", "url": "https://www.mohfw.gov.in/", "kind": "official"}
+    ]
+  }
+}

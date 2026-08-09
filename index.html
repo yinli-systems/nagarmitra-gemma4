@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08111f" />
+    <meta name="description" content="NagarMitra: a local-first civic action agent powered by Gemma 4." />
+    <title>NagarMitra · Gemma 4 civic action agent</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="NagarMitra home">
+        <span class="brand-mark">NM</span>
+        <span><strong>NagarMitra</strong><small>Prayagraj civic action agent</small></span>
+      </a>
+      <div class="topbar-meta">
+        <span class="live-dot"></span><span>Gemma 4 · local-first</span>
+        <span class="divider"></span><span class="queue-pill"><b id="queueCount">2</b> queued offline</span>
+      </div>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="hero">
+        <div class="eyebrow"><span>GENAI FOR GOOD</span><span class="eyebrow-line"></span><span>FIELD PROTOTYPE / 01</span></div>
+        <h1>Turn a street-level problem<br /><em>into a safer next step.</em></h1>
+        <p class="hero-copy">NagarMitra helps residents and community workers turn a photo or short message into a reviewable civic action card — in English or Hindi, even when the network is unavailable.</p>
+        <div class="hero-proof"><span>◈</span> No diagnosis &nbsp;·&nbsp; No fabricated contacts &nbsp;·&nbsp; Human approval before submission</div>
+      </section>
+
+      <section class="workspace" aria-label="NagarMitra demo workspace">
+        <section class="panel intake-panel">
+          <div class="panel-heading"><div><span class="panel-kicker">01 / INTAKE</span><h2>What needs attention?</h2></div><span class="secure-badge">OFFLINE READY</span></div>
+          <div class="case-list" role="list" aria-label="Demo cases">
+            <button class="case-btn active" data-case="garbage_overflow"><span class="case-icon">▦</span><span><b>Overflowing waste</b><small>Garbage beside a public lane</small></span><span class="case-arrow">↗</span></button>
+            <button class="case-btn" data-case="broken_streetlight"><span class="case-icon">◒</span><span><b>Broken streetlight</b><small>Dark route near a market</small></span><span class="case-arrow">↗</span></button>
+            <button class="case-btn" data-case="unsafe_water"><span class="case-icon">≈</span><span><b>Possible water issue</b><small>Unusual colour or odour</small></span><span class="case-arrow">↗</span></button>
+          </div>
+
+          <label class="field-label" for="reportText">Describe the situation <span>optional when using a photo</span></label>
+          <textarea id="reportText" rows="3" placeholder="e.g. कूड़ा तीन दिन से नहीं उठा है...">कूड़ा तीन दिन से नहीं उठा है और नाली बंद हो रही है।</textarea>
+
+          <div class="upload-label field-label">Add evidence <span>one photo · stays on device</span></div>
+          <label class="upload-box" for="photoInput">
+            <img id="photoPreview" src="sample_issue.svg" alt="Illustration of an overflowing waste bin" />
+            <span class="upload-overlay"><b>＋ Add a photo</b><small>Tap to replace sample evidence</small></span>
+            <input id="photoInput" type="file" accept="image/*" />
+          </label>
+
+          <div class="input-row">
+            <label class="field-label" for="placeInput">Approximate place <span>landmark only</span></label>
+            <input id="placeInput" value="Naini · near school gate" />
+          </div>
+          <div class="input-row language-row">
+            <span class="field-label">Response language</span>
+            <div class="segmented" role="group" aria-label="Response language">
+              <button class="lang-btn active" data-language="hi">हिन्दी</button><button class="lang-btn" data-language="en">English</button>
+            </div>
+          </div>
+          <button id="analyzeButton" class="primary-button"><span class="button-icon">✦</span><span>Analyze with Gemma 4</span><span class="button-arrow">→</span></button>
+          <p class="privacy-note"><span>⌁</span> Your photo is used for this analysis only. The demo never uploads or submits a complaint.</p>
+        </section>
+
+        <section class="panel trace-panel">
+          <div class="panel-heading"><div><span class="panel-kicker">02 / AGENT TRACE</span><h2>How the decision is made</h2></div><span id="runStatus" class="status-badge">READY</span></div>
+          <div class="trace-intro"><span class="trace-pulse"></span><span id="traceIntro">Gemma 4 is ready to inspect the report and call only approved local tools.</span></div>
+          <div id="traceSteps" class="trace-steps"></div>
+          <div class="trace-divider"></div>
+          <div class="guardrail-card">
+            <div class="guardrail-icon">✓</div>
+            <div><b>Safety gate is always on</b><p>Tool names and arguments are validated before execution. The model cannot invent a contact, diagnose a person, or send a ticket.</p></div>
+          </div>
+          <div class="source-strip"><span class="source-dot"></span><span><b>Grounded locally</b> · 2 source records selected from <code>knowledge.json</code></span></div>
+        </section>
+
+        <section class="panel action-panel">
+          <div class="panel-heading"><div><span class="panel-kicker">03 / ACTION CARD</span><h2>Ready for a human to review</h2></div><span class="card-state">DRAFT</span></div>
+          <div class="action-top"><div class="issue-chip"><span id="issueGlyph">▦</span><span id="issueLabel">Overflowing waste</span></div><div class="confidence"><span>MODEL CONFIDENCE</span><strong id="confidenceValue">94%</strong></div></div>
+          <div class="urgency-row"><span class="urgency-dot"></span><span><b id="urgencyValue">Today</b> · suggested response window</span></div>
+          <div class="action-copy"><p id="summaryText">Overflowing mixed waste beside a public lane near a school boundary.</p><p id="reasonText" class="muted">Standing waste can attract pests and contaminate nearby drains.</p></div>
+          <div class="assigned-box"><span class="mini-label">ROUTE TO</span><strong id="departmentValue">Municipal sanitation</strong><span id="departmentHindi" class="muted">नगर सफाई विभाग</span></div>
+          <div class="checklist-box"><div class="mini-label">EVIDENCE CHECKLIST</div><ul id="checklist"></ul></div>
+          <div class="sources-box"><div class="mini-label">GROUNDED SOURCES</div><div id="sourceList"></div></div>
+          <label class="approval-check"><input id="reviewCheck" type="checkbox" /> <span>I have reviewed this draft and will submit it myself.</span></label>
+          <div class="action-buttons"><button id="queueButton" class="secondary-button" disabled>Save to offline queue</button><button id="downloadButton" class="icon-button" title="Download draft" aria-label="Download draft">↓</button></div>
+          <p id="queueMessage" class="queue-message" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <section class="bottom-story">
+        <div><span class="panel-kicker">WHY THIS MATTERS</span><h2>From “ask an AI” to<br /><em>an accountable handoff.</em></h2></div>
+        <div class="story-points"><div><span>01</span><p><b>Multimodal</b> — Gemma 4 reads the resident's words and the visual evidence together.</p></div><div><span>02</span><p><b>Agentic</b> — approved tools route the issue and retrieve source-backed guidance.</p></div><div><span>03</span><p><b>Human-led</b> — a resident owns the final submission; the system only prepares the next step.</p></div></div>
+      </section>
+    </main>
+    <footer><span>NagarMitra / Build with Gemma · TFUG Prayagraj</span><span>Apache 2.0 · prototype</span></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
