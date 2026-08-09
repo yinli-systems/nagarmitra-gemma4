@@ -7,5 +7,5 @@
   "is_private": false,
   "enable_gpu": true,
   "competition_sources": ["build-with-gemma-tfug-prayagraj-ai-prayagraj"],
-  "model_sources": ["google/gemma-4"]
+  "model_sources": ["google/gemma-4/transformers/gemma-4-12b"]
 }
